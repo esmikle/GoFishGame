@@ -61,7 +61,7 @@ public class GroupOfCards {
     }
 
     public void isFourOfKind() {
-        // John
+        // Gary
         /* Checks if group of cards contains 4 of any rank and removes 
             them while increasing player set score */
     }

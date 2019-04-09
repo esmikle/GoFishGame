@@ -9,34 +9,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * A concrete class that represents any grouping of cards for a Game.
- * HINT, you might want to subclass this more than once.
- * The group of cards has a maximum size attribute which is flexible for reuse.
+ * A concrete class that represents any grouping of cards for a Game. HINT, you
+ * might want to subclass this more than once. The group of cards has a maximum
+ * size attribute which is flexible for reuse.
+ *
  * @author dancye
  */
-public class GroupOfCards 
-{
-   
+public class GroupOfCards {
+
     //The group of cards, stored in an ArrayList
-    private ArrayList <Card> cards;
+    private ArrayList<Card> cards;
     private int size;//the size of the grouping
-    
-    public GroupOfCards(int givenSize)
-    {
+
+    public GroupOfCards(int givenSize) {
         size = givenSize;
     }
-    
+
     /**
      * A method that will get the group of cards as an ArrayList
+     *
      * @return the group of cards.
      */
-    public ArrayList<Card> showCards()
-    {
+    public ArrayList<Card> showCards() {
         return cards;
     }
-    
-    public void shuffle()
-    {
+
+    public void shuffle() {
         Collections.shuffle(cards);
     }
 
@@ -54,19 +52,18 @@ public class GroupOfCards
         size = givenSize;
     }
 
-	public void addCard() {
-		// TODO - implement GroupOfCards.addCard
-		throw new UnsupportedOperationException();
-	}
+    public void addCard(Card card) {
+        cards.add(card);
+    }
 
-	public Card giveCard() {
-		// TODO - implement GroupOfCards.giveCard
-		throw new UnsupportedOperationException();
-	}
+    public Card giveCard(int index) {
+        return cards.remove(index);
+    }
 
-	public void isFourOfKind() {
-		// TODO - implement GroupOfCards.isFourOfKind
-		throw new UnsupportedOperationException();
-	}
-    
+    public void isFourOfKind() {
+        // John
+        /* Checks if group of cards contains 4 of any rank and removes 
+            them while increasing player set score */
+    }
+
 }//end class

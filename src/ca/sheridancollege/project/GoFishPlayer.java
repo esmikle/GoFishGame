@@ -1,13 +1,15 @@
 package ca.sheridancollege.project;
 
 public class GoFishPlayer extends Player {
-
+    
     private int numOfSets;
+    GroupOfCards hand;
     
     public GoFishPlayer(String name) {
         super(name);
+        hand = new GroupOfCards(4);
     }
-
+    
     @Override
     public void play() {
 

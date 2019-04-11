@@ -18,11 +18,12 @@ import java.util.Collections;
 public class GroupOfCards {
 
     //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
+    private ArrayList<GoFishCard> cards;
     private int size;//the size of the grouping
 
     public GroupOfCards(int givenSize) {
         size = givenSize;
+        cards = new ArrayList<>();
     }
 
     /**
@@ -30,7 +31,7 @@ public class GroupOfCards {
      *
      * @return the group of cards.
      */
-    public ArrayList<Card> showCards() {
+    public ArrayList<GoFishCard> showCards() {
         return cards;
     }
 
@@ -52,11 +53,11 @@ public class GroupOfCards {
         size = givenSize;
     }
 
-    public void addCard(Card card) {
+    public void addCard(GoFishCard card) {
         cards.add(card);
     }
 
-    public Card giveCard(int index) {
+    public GoFishCard giveCard(int index) {
         return cards.remove(index);
     }
 

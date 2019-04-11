@@ -3,11 +3,10 @@ package ca.sheridancollege.project;
 public class GoFishPlayer extends Player {
     
     private int numOfSets;
-    GroupOfCards hand;
+    GroupOfCards hand = new GroupOfCards(0);;
     
     public GoFishPlayer(String name) {
         super(name);
-        hand = new GroupOfCards(4);
     }
     
     @Override

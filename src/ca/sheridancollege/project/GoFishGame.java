@@ -22,9 +22,10 @@ public class GoFishGame extends Game {
             System.out.println("Enter number of players (2 - 4):");
             numOfPlayers = in.nextInt();
         }
+        in.nextLine();
         GroupOfCards deck = new GroupOfCards(52);
         for (int i = 0; i < numOfPlayers; i++) {
-            System.out.println("Enter name for player "+i+1);
+            System.out.println("Enter name for player "+(i+1));
             String name = in.nextLine();
             GoFishPlayer player = new GoFishPlayer(name);
             players.add(player);
@@ -42,12 +43,14 @@ public class GoFishGame extends Game {
         // Deal 4 cards to each player
         for (int i = 0; i < 4; i++) {
             for(GoFishPlayer p : players){
-                Card c = deck.giveCard(0);
+                GoFishCard c = deck.giveCard(0);
                 p.hand.addCard(c);
             }
         }
         
         // Choose random player to start
+        int random = (int)(Math.random()*numOfPlayers);
+        System.out.println("Player "+(random+1)+": "+players.get(random).getPlayerID()+ " will go first ");
         
     // Playing Game:  John and Elizabeth  
         // Display player hand numbered as options ex. 1) four of hearts
@@ -77,3 +80,4 @@ public class GoFishGame extends Game {
     }
     
 }
+

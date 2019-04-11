@@ -1,5 +1,8 @@
 package ca.sheridancollege.project;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class GoFishGame extends Game {
 
     public GoFishGame(){
@@ -9,11 +12,40 @@ public class GoFishGame extends Game {
     @Override
     public void play() {
     // Starting Game: Elizabeth 
-        // Create deck and player arraylists with names given by user (2 - 4 players)
+        Scanner in = new Scanner(System.in);
+        ArrayList<GoFishPlayer> players = new ArrayList<>();
+        String [] suits = {"HEARTS", "DIAMONDS", "CLUBS", "SPADES"};
+        int numOfPlayers = 0;
+        // Create deck and player arraylist with names given by user (2 - 4 players)
+        System.out.println("Welcome to Go Fish!");
+        while(numOfPlayers < 2 || numOfPlayers > 4){
+            System.out.println("Enter number of players (2 - 4):");
+            numOfPlayers = in.nextInt();
+        }
+        GroupOfCards deck = new GroupOfCards(52);
+        for (int i = 0; i < numOfPlayers; i++) {
+            System.out.println("Enter name for player "+i+1);
+            String name = in.nextLine();
+            GoFishPlayer player = new GoFishPlayer(name);
+            players.add(player);
+        }
         
         // Initialize deck with 52 cards
+        for (int i = 0; i < suits.length; i++) {
+            for (int j = 0; j < 13; j++) {
+                GoFishCard c = new GoFishCard(j+1, suits[i]);
+                deck.addCard(c);
+            }
+        }
+        deck.shuffle();
         
         // Deal 4 cards to each player
+        for (int i = 0; i < 4; i++) {
+            for(GoFishPlayer p : players){
+                Card c = deck.giveCard(0);
+                p.hand.addCard(c);
+            }
+        }
         
         // Choose random player to start
         

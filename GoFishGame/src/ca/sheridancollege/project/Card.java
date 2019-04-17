@@ -22,5 +22,8 @@ public abstract class Card
     
     @Override
     public abstract String toString();
+
+	protected int rank;
+	protected String suit;
     
 }

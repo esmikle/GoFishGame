@@ -59,6 +59,12 @@ public class GoFishGame extends Game {
                 break;
             }
         }
+        random++;
+        if(random == players.size()){
+            random = 0;
+        }else{
+        random++;
+        }
         // When a set of cards is completed it is removed from player's hand (discarded)
         players.get(random).hand.isFourOfKind();
         players.get(random).hand.showCards();

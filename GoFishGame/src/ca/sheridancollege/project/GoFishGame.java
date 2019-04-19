@@ -21,27 +21,52 @@ public class GoFishGame extends Game {
         // Choose random player to start
         int random = (int) (Math.random() * numOfPlayers);
         System.out.println("Player " + (random + 1) + ": " + players.get(random).getPlayerID() + " will go first ");
-
+        
+         // Display player hand numbered as options ex. 1) four of hearts
         players.get(random).hand.showCards();
         players.get(random).hand.isFourOfKind();
         // Playing Game:  John and Elizabeth  
-        // Display player hand numbered as options ex. 1) four of hearts
+        
         // Player chooses a card and another player to ask for the card (For ease players can be numbered)
+        while(deck.getSize() > 0){
+        System.out.println("Choose a card from your hand:");
+        players.get(random).hand.showCards();
+        int choiceCard = in.nextInt();
+        System.out.println("Choose a player to ask:");
+        int i = 0;
+        for(GoFishPlayer p : players){
+            if(random != i){
+                System.out.println(i+") "+p.getPlayerID());
+            }
+            i++;
+        }
+        int choicePlayer = in.nextInt();
+        GoFishCard cardAsked = players.get(random).hand.printCard(choiceCard);
+        GoFishPlayer playerAsked = players.get(choicePlayer);
+        System.out.println("You chose "+playerAsked.getPlayerID()+" for the "+cardAsked.toString());
+        
         /* If the other player has the card it will be given to the player whose asked
              a) Player can continue their turn and ask for another card
              b) Else player will receive a "Go Fish" message (Signifys end of turn)*/
+        for(GoFishCard c : playerAsked.hand.getCards()){
+            if(c == cardAsked){
+                GoFishCard card = playerAsked.hand.giveCard(choiceCard);
+                players.get(random).hand.addCard(card);
+            } else {
+                System.out.println("Go Fish");
+                GoFishCard b = deck.giveCard(0);
+                players.get(random).hand.addCard(b);
+                break;
+            }
+        }
         // When a set of cards is completed it is removed from player's hand (discarded)
-        // Score Keeping: Gary
-        // Player round scores should be displayed at all times (round score = number of sets made)
-        // Player round score should be automatically increased when they complete a set of cards
-        // Player game score should display after each round (max of 5 rounds) (game score = number of rounds won)
-        // At any point if user chooses to quit show the final game score
+        players.get(random).hand.isFourOfKind();
+        players.get(random).hand.showCards();
+        System.out.println("End of Turn");
     }
-  public void draw(){
- 
-      
-      
-  }
+    }
+    
+
     public void dealToPlayers() {
         // Deal 4 cards to each player
         for (int i = 0; i < 4; i++) {

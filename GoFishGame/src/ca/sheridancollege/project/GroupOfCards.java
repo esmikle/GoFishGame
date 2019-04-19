@@ -25,15 +25,20 @@ public class GroupOfCards {
         size = givenSize;
         cards = new ArrayList<>();
     }
-
+    
+    public ArrayList<GoFishCard> getCards() {
+        return cards;
+    }
     /**
      * A method that will get the group of cards as an ArrayList
      *
      * @return the group of cards.
      */
     public void showCards() {
+        int i = 0;
         for (Card c : cards) {
-            System.out.println(c.toString());
+            System.out.println(i+") "+c.toString());
+            i++;
         }
     }
 
@@ -58,12 +63,16 @@ public class GroupOfCards {
     public void addCard(GoFishCard card) {
         cards.add(card);
     }
+    
+    public GoFishCard printCard(int index){
+        return cards.get(index);
+    }
 
     public GoFishCard giveCard(int index) {
         return cards.remove(index);
     }
 
-    public boolean isFourOfKind() {
+    public void isFourOfKind() {
         /* Checks if group of cards contains 4 of any rank and removes 
             them while increasing player set score */
         int counter = 0;
@@ -77,10 +86,14 @@ public class GroupOfCards {
             }
             if (counter == 4) {
                 System.out.println("Four of kind found for rank " + rank);
-                return true;
             }
         }
-        return false;
+        
+        for(GoFishCard c : cards){
+            if(rank == c.rank){
+                cards.remove(c);
+            }
+        }
     }
 
 }//end class

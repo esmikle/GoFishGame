@@ -16,6 +16,7 @@ public class GoFishGame extends Game {
         ArrayList<GoFishPlayer> players = new ArrayList<>();
         String [] suits = {"HEARTS", "DIAMONDS", "CLUBS", "SPADES"};
         int numOfPlayers = 0;
+        
         // Create deck and player arraylist with names given by user (2 - 4 players)
         System.out.println("Welcome to Go Fish!");
         while(numOfPlayers < 2 || numOfPlayers > 4){

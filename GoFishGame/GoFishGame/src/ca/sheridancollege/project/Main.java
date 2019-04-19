@@ -12,7 +12,9 @@ package ca.sheridancollege.project;
 public class Main {
     public static void main (String [] args){
         GoFishGame game = new GoFishGame();
-        
+        game.initializeDeck();
+        game.initializePlayers();
+        game.dealToPlayers();
         game.play();
     }
 }

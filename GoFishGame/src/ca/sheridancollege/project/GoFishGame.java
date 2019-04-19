@@ -24,6 +24,7 @@ public class GoFishGame extends Game {
 
         players.get(random).hand.showCards();
         players.get(random).hand.isFourOfKind();
+        
         // Playing Game:  John and Elizabeth  
         // Display player hand numbered as options ex. 1) four of hearts
         // Player chooses a card and another player to ask for the card (For ease players can be numbered)
@@ -37,7 +38,7 @@ public class GoFishGame extends Game {
         // Player game score should display after each round (max of 5 rounds) (game score = number of rounds won)
         // At any point if user chooses to quit show the final game score
     }
-
+  
     public void dealToPlayers() {
         // Deal 4 cards to each player
         for (int i = 0; i < 4; i++) {

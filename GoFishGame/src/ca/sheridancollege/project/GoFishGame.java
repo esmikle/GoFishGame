@@ -62,22 +62,26 @@ public class GoFishGame extends Game {
         players.get(random).hand.showCards();
         System.out.println("End of Turn");
     }
-
+  public void draw(){
+ 
+      
+      
+  }
     public void dealToPlayers() {
         // Deal 4 cards to each player
         for (int i = 0; i < 4; i++) {
-            for (GoFishPlayer p : players) {
+            players.forEach((p) -> {
                 GoFishCard c = deck.giveCard(0);
                 p.hand.addCard(c);
-            }
+            });
         }
     }
 
     public void initializeDeck() {
         // Initialize deck with 52 cards
-        for (int i = 0; i < suits.length; i++) {
+        for (String suit : suits) {
             for (int j = 0; j < 13; j++) {
-                GoFishCard c = new GoFishCard(j + 1, suits[i]);
+                GoFishCard c = new GoFishCard(j + 1, suit);
                 deck.addCard(c);
             }
         }
